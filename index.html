@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List Simpel</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    h1 {
+      color: #333;
+    }
+    #todo-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+    li {
+      background: #e9ecef;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li button {
+      background: crimson;
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My To-Do List 📝</h1>
+
+  <div id="todo-container">
+    <input type="text" id="todo-input" placeholder="Tambah tugas...">
+    <button onclick="addTodo()">Tambah</button>
+    <ul id="todo-list"></ul>
+  </div>
+
+  <script>
+    function addTodo() {
+      const input = document.getElementById('todo-input');
+      const list = document.getElementById('todo-list');
+
+      if (input.value.trim() === '') return;
+
+      const li = document.createElement('li');
+      li.textContent = input.value;
+
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Hapus';
+      delBtn.onclick = () => li.remove();
+
+      li.appendChild(delBtn);
+      list.appendChild(li);
+
+      input.value = '';
+    }
+  </script>
+
+</body>
+</html>
